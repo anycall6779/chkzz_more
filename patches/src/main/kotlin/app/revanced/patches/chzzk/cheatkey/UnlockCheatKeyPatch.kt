@@ -117,27 +117,6 @@ val unlockCheatKeyPatch = bytecodePatch(
                 )
             }
 
-        PlayableAdDataFingerprint.classDef.methods
-            .filter { method ->
-                method.isBooleanFieldGetter(
-                    definingClass = PLAYABLE_AD_DATA_CLASS,
-                    fieldNames = setOf("adMonetizationAvailability")
-                )
-            }
-            .forEach { method ->
-                method.returnEarly(false)
-            }
-
-        PlayableAdDataFingerprint.classDef.methods
-            .filter { method ->
-                method.isIntFieldGetter(
-                    definingClass = PLAYABLE_AD_DATA_CLASS,
-                    fieldNames = setOf("adCount")
-                )
-            }
-            .forEach { method ->
-                method.returnEarly(0)
-            }
     }
 }
 
